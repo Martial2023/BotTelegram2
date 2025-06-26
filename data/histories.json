@@ -235,6 +235,22 @@
     {
       "role": "assistant",
       "content": "Bonjour !\n\nOui, je vous entends correctement ! Ou plutôt, je reçois vos messages et je peux les comprendre.\n\nJe suis conçu pour traiter et comprendre le langage naturel, donc je peux comprendre ce que vous dites et répondre en conséquence.\n\nSi vous avez des questions ou des préoccupations, je suis là pour vous aider ! Comment puis-je vous aider aujourd'hui ?"
+    },
+    {
+      "role": "user",
+      "content": "hi"
+    },
+    {
+      "role": "assistant",
+      "content": "Hi !\n\nIl semble que nous soyons de retour à la case départ !\n\nComment allez-vous aujourd'hui ? Vous avez des questions, des préoccupations ou des idées à partager ? Je suis là pour vous écouter !"
+    },
+    {
+      "role": "user",
+      "content": "salut"
+    },
+    {
+      "role": "assistant",
+      "content": "Salut !\n\nIl semble que nous soyons dans une boucle de salutations !\n\nComment puis-je vous aider aujourd'hui ? Vous avez des questions, des préoccupations ou des idées à partager ? Je suis là pour vous écouter !"
     }
   ],
   "5942359411": [
