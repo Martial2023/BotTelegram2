@@ -9,9 +9,9 @@
 - **💬 Réponses instantanées** : Répond aux messages texte envoyés sur Telegram avec des réponses contextuelles et pertinentes.
 - **🎙️ Transcription vocale** : Convertit les messages vocaux en texte (en français) grâce à Google Speech Recognition.
 - **🧠 Intelligence contextuelle** : Génère des réponses basées sur le modèle **LLaMA 4** via l’API Groq.
-- **🔊 Synthèse vocale** : Produit des réponses vocales synthétisées avec `pyttsx3`, converties en `.ogg` pour une compatibilité avec Telegram.
+- **🔊 Synthèse vocale** : Produit des réponses vocales synthétisées avec `gTTS`, converties en `.mp3` pour une compatibilité avec Telegram.
 - **🌐 Endpoint HTTP** : Fournit une interface HTTP via **FastAPI** pour vérifier la santé de l’application.
-- **☁️ Déploiement cloud** : Hébergé sur **Render.com** avec une surveillance active via **UptimeRobot**.
+- **☁️ Déploiement cloud** : Hébergé sur **Render.com**, avec maintien actif via **UptimeRobot** qui effectue un `HEAD` sur l’API toutes les 5 minutes pour éviter l’endormissement.
 
 ---
 
@@ -24,7 +24,7 @@
 - **`utils.py`** : Fonctions utilitaires pour la transcription vocale et la gestion des fichiers.
 - **`settings.py`** : Configuration des variables d’environnement et des paramètres système.
 - **`build.sh`** : Script d’installation des dépendances et des outils nécessaires.
-- **`media/`** : Répertoire pour les fichiers audio (ogg et wav).
+- **`media/`** : Répertoire pour les fichiers audio (ogg et mp3).
 - **`data/`** : Contient les historiques des conversations.
 
 ---
@@ -79,6 +79,7 @@
 ### Endpoint HTTP
 
 - **`GET /`** : Vérifie la santé de l’application.
+- **UptimeRobot** : Effectue un `HEAD` toutes les 5 minutes pour maintenir l’API active.
 
 ---
 
