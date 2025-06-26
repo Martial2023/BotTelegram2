@@ -1,18 +1,93 @@
-# 🤖 ProlinkeetAI — Assistant Vocal Telegram avec LLaMA et FastAPI
+# 🤖 ProlinkeetAI — Assistant Personnel Telegram avec LLaMA et FastAPI
 
-**ProlinkeetAI** est un assistant intelligent disponible via un **bot Telegram** capable de comprendre et de répondre aux **messages texte et vocaux**, en s’appuyant sur le modèle **LLaMA 4 de Meta** via l’API **Groq**. Il utilise **FastAPI** pour exposer un endpoint HTTP (ping/keep-alive), est **déployé sur Render**, et est maintenu en éveil grâce à **UptimeRobot**.
+**ProlinkeetAI** est un assistant personnel numérique conçu pour offrir une expérience utilisateur fluide et intelligente via un **bot Telegram**. Ce projet exploite des technologies avancées telles que le modèle **LLaMA 4** de Meta, l’API **Groq**, et **FastAPI** pour fournir des réponses contextuelles précises et des interactions vocales naturelles. Le code est hébergé sur **Render**, garantissant une disponibilité continue grâce à **UptimeRobot**.
 
 ---
 
 ## 🚀 Fonctionnalités
 
-- 💬 Réponses instantanées aux messages texte envoyés sur Telegram.
-- 🎙️ Transcription de messages vocaux (en français) grâce à Google Speech Recognition.
-- 🧠 Génération de réponses contextuelles avec le modèle **LLaMA 4** (Groq API).
-- 🔊 Réponses vocales synthétisées avec `pyttsx3` et converties en `.ogg` pour Telegram.
-- 🌐 Interface HTTP via **FastAPI** (endpoint `/`) pour vérification de santé.
-- ☁️ Déploiement cloud sur **Render.com**, avec maintien actif via **UptimeRobot**.
+- **💬 Réponses instantanées** : Répond aux messages texte envoyés sur Telegram avec des réponses contextuelles et pertinentes.
+- **🎙️ Transcription vocale** : Convertit les messages vocaux en texte (en français) grâce à Google Speech Recognition.
+- **🧠 Intelligence contextuelle** : Génère des réponses basées sur le modèle **LLaMA 4** via l’API Groq.
+- **🔊 Synthèse vocale** : Produit des réponses vocales synthétisées avec `pyttsx3`, converties en `.ogg` pour une compatibilité avec Telegram.
+- **🌐 Endpoint HTTP** : Fournit une interface HTTP via **FastAPI** pour vérifier la santé de l’application.
+- **☁️ Déploiement cloud** : Hébergé sur **Render.com** avec une surveillance active via **UptimeRobot**.
 
 ---
 
-## 📂 Architecture du projet
+## 📂 Architecture du Projet
+
+### Structure des Dossiers
+
+- **`main.py`** : Point d’entrée principal du bot Telegram et du serveur FastAPI.
+- **`ask_llm.py`** : Gestion des interactions avec le modèle LLaMA et historique des conversations.
+- **`utils.py`** : Fonctions utilitaires pour la transcription vocale et la gestion des fichiers.
+- **`settings.py`** : Configuration des variables d’environnement et des paramètres système.
+- **`build.sh`** : Script d’installation des dépendances et des outils nécessaires.
+- **`media/`** : Répertoire pour les fichiers audio (ogg et wav).
+- **`data/`** : Contient les historiques des conversations.
+
+---
+
+## 🛠️ Installation et Déploiement
+
+### Prérequis
+
+- **Python 3.10+**
+- **Render.com** pour l’hébergement
+- **UptimeRobot** pour la surveillance
+
+### Étapes d’Installation
+
+1. Clonez le dépôt :
+   ```bash
+   git clone <URL_du_dépôt>
+   cd TelegramChatLLM
+   ```
+
+2. Installez les dépendances :
+   ```bash
+   bash build.sh
+   ```
+
+3. Configurez les variables d’environnement :
+   - Créez un fichier `.env` à la racine.
+   - Ajoutez les clés nécessaires :
+     ```env
+     BOT_TOKEN=<Votre_Token_Telegram>
+     GROQ_API_KEY=<Votre_API_Key_Groq>
+     ```
+
+4. Lancez l’application localement :
+   ```bash
+   python main.py
+   ```
+
+5. Déployez sur Render.com en suivant les instructions de leur documentation.
+
+---
+
+## 📖 Fonctionnement
+
+### Interaction avec Telegram
+
+- **Commandes** :
+  - `/start` : Démarre une conversation avec le bot.
+  - Messages texte : Réponses instantanées basées sur le contexte.
+  - Messages vocaux : Transcription et réponse vocale.
+
+### Endpoint HTTP
+
+- **`GET /`** : Vérifie la santé de l’application.
+
+---
+
+## 🧑‍💻 Contributions
+
+Les contributions sont les bienvenues ! Veuillez soumettre vos pull requests ou ouvrir des issues pour signaler des bugs ou proposer des améliorations.
+
+---
+
+## 📄 Licence
+
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
