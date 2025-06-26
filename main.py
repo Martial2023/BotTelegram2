@@ -47,6 +47,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    print("Message received")
     user_Id = str(update.effective_user.id)
     message = update.message.text
     response = ask_llm(message, user_Id)
@@ -55,6 +56,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def handle_voice_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
+        print("Voice message received")
         user_Id = str(update.effective_user.id)
         messageVoice = update.message.voice
         file = await context.bot.get_file(messageVoice.file_id)
