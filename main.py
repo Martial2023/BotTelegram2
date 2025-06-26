@@ -1,3 +1,4 @@
+from fileinput import filename
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, MessageHandler, filters
 import os
@@ -9,15 +10,13 @@ import uvicorn
 from settings import BOT_TOKEN
 from utils import transcript_voice_message
 from ask_llm import ask_llm
-import pyttsx3
+from gtts import gTTS
 from pydub import AudioSegment
 import re
 load_dotenv()
 
 
 app = FastAPI()
-engine = pyttsx3.init()
-engine.setProperty('rate', 150)
 
 
 @app.get(
@@ -69,14 +68,14 @@ async def handle_voice_message(update: Update, context: ContextTypes.DEFAULT_TYP
 
         await update.message.reply_text(response)
         response = re.sub(r'[\*\_`]', '', response.replace('\n', ' '))
-        engine.save_to_file(response, f'media/bot/wav/{messageVoice.file_id}.wav')
-        engine.runAndWait()
-        sound = AudioSegment.from_wav(f'media/bot/wav/{messageVoice.file_id}.wav')
+        tts = gTTS(text=response, lang='fr')
+        tts.save(f'media/bot/mp3/{messageVoice.file_id}.mp3')
+        sound = AudioSegment.from_mp3(f'media/bot/mp3/{messageVoice.file_id}.mp3')
         sound.export(f'media/bot/ogg/{messageVoice.file_id}.ogg', format="ogg")
 
         await context.bot.send_voice(chat_id=update.effective_chat.id, voice=open(f'media/bot/ogg/{messageVoice.file_id}.ogg', 'rb'))
 
-        os.remove(f'media/bot/wav/{messageVoice.file_id}.wav')
+        os.remove(f'media/bot/mp3/{messageVoice.file_id}.mp3')
         os.remove(f'media/bot/ogg/{messageVoice.file_id}.ogg')
         os.remove(ogg_path)
         os.remove(wav_path)
